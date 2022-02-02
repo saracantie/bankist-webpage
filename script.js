@@ -91,6 +91,30 @@ document.querySelector('.nav__links').addEventListener('click', function (e) {
   }
 });
 
+//----- Tabbed Component -----//
+const tabs = document.querySelectorAll('.operations__tab');
+const tabsContainer = document.querySelector('.operations__tab-container');
+const tabsContent = document.querySelectorAll('.operations__content');
+
+tabsContainer.addEventListener('click', function (e) {
+  const clicked = e.target.closest('.operations__tab');
+
+  //GUARD CLAUSE
+  if (!clicked) return;
+
+  //Remove active classes
+  tabs.forEach(t => t.classList.remove('operations__tab--active'));
+  tabsContent.forEach(c => c.classList.remove('operations__content--active'));
+
+  //Activate tab
+  clicked.classList.add('operations__tab--active');
+
+  //Activate content area
+  document
+    .querySelector(`.operations__content--${clicked.dataset.tab}`)
+    .classList.add('operations__content--active');
+});
+
 ////////////////////////////////////////////////////////////////////////////////////////
 
 ///////////////////////////////////////////////////////////////////////////////////////
@@ -187,7 +211,7 @@ document
   .addEventListener('click', function (e) {});
 
 document.querySelector('.nav').addEventListener('click', function (e) {});
-*/
+
 
 //DOM TRAVERSING
 
@@ -203,3 +227,16 @@ h1.lastElementChild.getElementsByClassName.color = 'orangered';
 //Going upwards: parents
 console.log(h1.parentNode);
 console.log(h1.parentElement);
+
+h1.closest('.header').style.background = 'var(--gradient-secondary)';
+//eh igual queryselector mas ao inves de encontrar childrens nao importa onde encontra os parents
+
+//Going sideways: siblings
+
+//p elements:
+console.log(h1.previousElementSibling);
+console.log(h1.nextElementSibling);
+//p nodes:
+console.log(h1.previousSibling);
+console.log(h1.nextSibling);
+*/
